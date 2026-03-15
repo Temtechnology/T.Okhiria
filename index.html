@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperate Okhiria — Web Designer & Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav id="mainNav">
+  <div class="nav-logo" onclick="showPage('home')">T.<span>Okhiria</span></div>
+  <div class="nav-links">
+    <button class="nav-btn active" onclick="showPage('home')" data-page="home">Home</button>
+    <button class="nav-btn" onclick="showPage('projects')" data-page="projects">Projects</button>
+    <button class="nav-btn" onclick="showPage('contact')" data-page="contact">Contact</button>
+  </div>
+  <button class="nav-cta" onclick="showPage('contact')">Hire Me</button>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-btn active" id="mnHome"    onclick="showPage('home');    closeMobileNav()">Home</button>
+  <button class="mobile-nav-btn"        id="mnProjects" onclick="showPage('projects'); closeMobileNav()">Projects</button>
+  <button class="mobile-nav-btn"        id="mnContact"  onclick="showPage('contact');  closeMobileNav()">Contact</button>
+  <div class="mobile-nav-divider"></div>
+  <button class="mobile-nav-cta" onclick="showPage('contact'); closeMobileNav()">Hire Me</button>
+</div>
+
+<div id="app">
+
+<!-- ═══════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════════ -->
+<div id="home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">WordPress Designer &amp; Front-End Developer</div>
+      <h1 class="hero-name">
+        Temperate<br>
+        <span class="line2">Okhiria</span>
+      </h1>
+      <p class="hero-desc">
+        Building clean, purposeful websites with WordPress, Elementor, and custom code.
+        From local development to live deployment — based in Lagos, Nigeria.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('projects')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          View Projects
+        </button>
+        <button class="btn-outline" onclick="showPage('contact')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-n">5<span>+</span></div>
+          <div class="stat-l">Sites Built</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-n">3<span>+</span></div>
+          <div class="stat-l">Years Learning</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-n">6<span>+</span></div>
+          <div class="stat-l">Services</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo-wrap">
+        <img src="images/Temperate-img.png" width="500px">
+      </div>
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">Available for work</span>
+      </div>
+      <div class="hero-tech-card">
+        <div class="tech-card-label">Tech Stack</div>
+        <div class="tech-dots">
+          <div class="tech-dot" style="background:#e34c26" title="HTML5"></div>
+          <div class="tech-dot" style="background:#264de4" title="CSS3"></div>
+          <div class="tech-dot" style="background:#f0db4f" title="JavaScript"></div>
+          <div class="tech-dot" style="background:#61dafb" title="React"></div>
+          <div class="tech-dot" style="background:#21759b" title="WordPress"></div>
+          <div class="tech-dot" style="background:#7952b3" title="Bootstrap"></div>
+          <div class="tech-dot" style="background:#00e5a0" title="Elementor"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT + SKILLS -->
+  <section class="about-section">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <div class="tag anim">About Me</div>
+          <h2 class="section-title anim anim-d1">Designer &amp;<br><em>Problem Solver</em></h2>
+          <div class="about-body anim anim-d2">
+            <p>I'm a WordPress website designer with <strong>hands-on experience</strong> building and managing sites using WordPress and Elementor — handling everything from local development on XAMPP through to live deployment with SSL and business email.</p>
+            <p>I have a growing foundation in <strong>HTML, CSS, JavaScript, React &amp; Bootstrap</strong>, and I'm continuously learning and using AI tools to deliver reliable, modern web solutions. Always researching, always improving.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="tag anim">Core Skills</div>
+          <div class="skills-grid">
+            <div class="skill-row anim anim-d1">
+              <div class="skill-row-top"><span class="skill-name">WordPress &amp; Elementor</span><span class="skill-pct">90%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-w="90"></div></div>
+            </div>
+            <div class="skill-row anim anim-d2">
+              <div class="skill-row-top"><span class="skill-name">HTML &amp; CSS</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+            </div>
+            <div class="skill-row anim anim-d3">
+              <div class="skill-row-top"><span class="skill-name">JavaScript</span><span class="skill-pct">65%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-w="65"></div></div>
+            </div>
+            <div class="skill-row anim anim-d4">
+              <div class="skill-row-top"><span class="skill-name">React &amp; Bootstrap</span><span class="skill-pct">45%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-w="45"></div></div>
+            </div>
+            <div class="skill-row anim anim-d5">
+              <div class="skill-row-top"><span class="skill-name">SEO &amp; Hosting Setup</span><span class="skill-pct">75%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-w="75"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FUTURE SKILLS -->
+      <div class="future-section">
+        <div class="tag anim">Future Roadmap</div>
+        <h3 class="section-title anim anim-d1" style="font-size:3.6rem">Where I'm <em>Heading</em></h3>
+        <div class="future-grid">
+          <div class="future-card anim anim-d1">
+            <div class="future-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <div class="future-content">
+              <div class="future-title">Networking</div>
+              <div class="future-desc">TCP/IP, DNS, routing, firewalls, and network architecture fundamentals.</div>
+              <span class="future-badge">Learning</span>
+            </div>
+          </div>
+          <div class="future-card anim anim-d2">
+            <div class="future-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="future-content">
+              <div class="future-title">Cloud Computing</div>
+              <div class="future-desc">AWS, Azure or GCP — cloud infrastructure, deployment and engineering.</div>
+              <span class="future-badge">Planned</span>
+            </div>
+          </div>
+          <div class="future-card anim anim-d3">
+            <div class="future-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            </div>
+            <div class="future-content">
+              <div class="future-title">DevOps</div>
+              <div class="future-desc">CI/CD pipelines, Docker, Kubernetes, infrastructure as code.</div>
+              <span class="future-badge">Planned</span>
+            </div>
+          </div>
+          <div class="future-card anim anim-d4">
+            <div class="future-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="future-content">
+              <div class="future-title">DevSecOps</div>
+              <div class="future-desc">Security-first development, vulnerability scanning, compliance automation.</div>
+              <span class="future-badge">Planned</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="wrap">
+      <div class="services-intro">
+        <div>
+          <div class="tag anim">What I Do</div>
+          <h2 class="section-title anim anim-d1">My <em>Services</em></h2>
+        </div>
+        <p class="services-intro-right anim">
+          From WordPress sites to custom-coded front-ends — I handle design, development, and deployment.
+        </p>
+      </div>
+
+      <div class="svc-tabs">
+        <span class="svc-tab active" data-filter="all">All Services</span>
+        <span class="svc-tab" data-filter="wordpress">WordPress</span>
+        <span class="svc-tab" data-filter="coding">Custom Coding</span>
+        <span class="svc-tab" data-filter="deployment">Deployment</span>
+      </div>
+
+      <div class="svc-grid">
+
+        <!-- Featured: Business Websites -->
+        <div class="svc-card featured" data-cat="wordpress">
+          <div class="svc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=75" class="svc-img" alt="Business Website" loading="lazy">
+            <div class="svc-img-overlay"></div>
+          </div>
+          <div class="svc-body">
+            <div class="svc-cat">WordPress · Elementor</div>
+            <h3 class="svc-title">Business Websites</h3>
+            <p class="svc-desc">Professional, trust-building websites for businesses of all sizes with custom layouts and branding.</p>
+            <ul class="svc-features">
+              <li>Custom homepage &amp; service pages</li>
+              <li>Contact forms &amp; maps</li>
+              <li>Brand-aligned design</li>
+              <li>Mobile-first &amp; responsive</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- E-Commerce -->
+        <div class="svc-card" data-cat="wordpress">
+          <div class="svc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=75" class="svc-img" alt="E-Commerce" loading="lazy">
+            <div class="svc-img-overlay"></div>
+          </div>
+          <div class="svc-body">
+            <div class="svc-cat">WooCommerce</div>
+            <h3 class="svc-title">E-Commerce Stores</h3>
+            <p class="svc-desc">Online stores with product pages, shopping carts, and payment gateways.</p>
+            <ul class="svc-features">
+              <li>Product listings &amp; checkout</li>
+              <li>Payment gateway setup</li>
+              <li>Order management</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Landing Pages -->
+        <div class="svc-card" data-cat="wordpress">
+          <div class="svc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=600&q=75" class="svc-img" alt="Landing Page" loading="lazy">
+            <div class="svc-img-overlay"></div>
+          </div>
+          <div class="svc-body">
+            <div class="svc-cat">Elementor · Conversion</div>
+            <h3 class="svc-title">Landing Pages</h3>
+            <p class="svc-desc">High-converting focused pages for products, services or campaigns.</p>
+            <ul class="svc-features">
+              <li>Single-focus with strong CTA</li>
+              <li>Lead capture forms</li>
+              <li>Fast &amp; SEO-optimised</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Portfolio Sites -->
+        <div class="svc-card" data-cat="wordpress">
+          <div class="svc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1545665225-b23b99e4d45e?w=600&q=75" class="svc-img" alt="Portfolio" loading="lazy">
+            <div class="svc-img-overlay"></div>
+          </div>
+          <div class="svc-body">
+            <div class="svc-cat">WordPress · Creative</div>
+            <h3 class="svc-title">Portfolio Websites</h3>
+            <p class="svc-desc">Elegant sites for creatives — built to showcase work and attract clients.</p>
+            <ul class="svc-features">
+              <li>Project gallery with filtering</li>
+              <li>Testimonials &amp; social proof</li>
+              <li>Clean image-forward layout</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Custom Coding -->
+        <div class="svc-card featured" data-cat="coding">
+          <div class="svc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&q=75" class="svc-img" alt="Custom Code" loading="lazy">
+            <div class="svc-img-overlay"></div>
+          </div>
+          <div class="svc-body">
+            <div class="svc-cat">HTML · CSS · JS · React</div>
+            <h3 class="svc-title">Custom Coding &amp; Front-End Dev</h3>
+            <p class="svc-desc">Beyond WordPress — custom-coded websites built from scratch with modern front-end technologies. Pixel-perfect and fully tailored.</p>
+            <ul class="svc-features">
+              <li>Hand-coded HTML, CSS &amp; JavaScript</li>
+              <li>React.js component-based UIs</li>
+              <li>Bootstrap &amp; responsive frameworks</li>
+              <li>Animations &amp; micro-interactions</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Deployment -->
+        <div class="svc-card" data-cat="deployment">
+          <div class="svc-img-wrap">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=75" class="svc-img" alt="Deployment" loading="lazy">
+            <div class="svc-img-overlay"></div>
+          </div>
+          <div class="svc-body">
+            <div class="svc-cat">Hosting · SSL · Email</div>
+            <h3 class="svc-title">Live Deployment</h3>
+            <p class="svc-desc">Full go-live — domain, hosting, SSL security, and business email setup.</p>
+            <ul class="svc-features">
+              <li>Domain &amp; DNS setup</li>
+              <li>SSL certificate installation</li>
+              <li>Business email config</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER inside home -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <p class="footer-copy">© 2026 Temperate Okhiria &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#cea1baaba3beabbcafbaab8ea9a3afa7a2e0ada1a3"><span class="__cf_email__" data-cfemail="d6b9a2b3bba6b3a4b7a2b396b1bbb7bfbaf8b5b9bb">[email&#160;protected]</span></a></p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/temperate-okhiria-bb332926b/" target="_blank" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://m.me/61584522664198" target="_blank" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://wa.me/2347077905197" target="_blank" class="social-btn" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /home -->
+
+
+<!-- ═══════════════════════════════════════
+     PROJECTS PAGE
+════════════════════════════════════════ -->
+<div id="projects" class="page">
+  <section class="projects-section pt-page">
+    <div class="wrap">
+      <div class="projects-header">
+        <div>
+          <div class="tag anim">My Work</div>
+          <h2 class="section-title anim anim-d1">Projects &amp;<br><em>Case Studies</em></h2>
+        </div>
+        <p class="anim" style="font-size:1.55rem;color:var(--muted);max-width:380px;line-height:1.6">
+          Real websites built for real clients. More projects added as they are completed.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: Gardening Service Website -->
+        <div class="project-card anim">
+          <div class="project-img-wrap">
+            <img src="images/HOME.jpeg" class="project-img" alt="Green Garden Services"
+                 onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=75'"
+                 loading="lazy">
+            <div class="project-overlay">
+              <div class="project-overlay-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="project-tag">WordPress</span>
+              <span class="project-tag">Elementor</span>
+            </div>
+            <h3 class="project-title">Green Garden Services</h3>
+            <p class="project-desc">A full business website for a gardening &amp; landscaping service — built locally with XAMPP and deployed live with SSL and business email.</p>
+            <div class="project-footer">
+              <span class="project-year">2024</span>
+              <a href="#" class="project-link" onclick="return false">
+                View Case Study
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coming Soon cards -->
+        <div class="project-card coming-soon anim anim-d1">
+          <div class="coming-soon-inner">
+            <div class="coming-soon-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="coming-soon-title">Next Project</div>
+            <div class="coming-soon-text">Currently in progress.<br>Check back soon.</div>
+          </div>
+        </div>
+
+        <div class="project-card coming-soon anim anim-d2">
+          <div class="coming-soon-inner">
+            <div class="coming-soon-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="coming-soon-title">Coming Soon</div>
+            <div class="coming-soon-text">More projects on the way<br>as clients are completed.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <p class="footer-copy">© 2026 Temperate Okhiria &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#e58a918088958097849180a58288848c89cb868a88"><span class="__cf_email__" data-cfemail="4f203b2a223f2a3d2e3b2a0f28222e2623612c2022">[email&#160;protected]</span></a></p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/temperate-okhiria-bb332926b/" target="_blank" class="social-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://wa.me/2347077905197" target="_blank" class="social-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div><!-- /projects -->
+
+
+<!-- ═══════════════════════════════════════
+     CONTACT PAGE
+════════════════════════════════════════ -->
+<div id="contact" class="page">
+  <section class="contact-section pt-page">
+    <div class="wrap">
+      <div class="tag anim">Let's Talk</div>
+      <h2 class="section-title anim anim-d1" style="margin-bottom:5rem">Have a project<br><em>in mind?</em></h2>
+
+      <div class="contact-grid">
+
+        <div class="contact-info">
+          <p class="contact-intro anim">
+            I'm currently available for WordPress website design and front-end development projects. Whether it's a business site, e-commerce store, landing page or custom-coded project — let's build something great.
+          </p>
+
+          <div class="contact-methods">
+            <a href="/cdn-cgi/l/email-protection#bdd2c9d8d0cdd8cfdcc9d8fddad0dcd4d193ded2d0" class="contact-method anim anim-d1">
+              <div class="contact-method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-method-label">Email</div>
+                <div class="contact-method-value"><span class="__cf_email__" data-cfemail="157a617078657067746170557278747c793b767a78">[email&#160;protected]</span></div>
+              </div>
+            </a>
+            <a href="https://wa.me/2347077905197" target="_blank" class="contact-method anim anim-d2">
+              <div class="contact-method-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              </div>
+              <div>
+                <div class="contact-method-label">WhatsApp</div>
+                <div class="contact-method-value">+234 707 790 5197</div>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/temperate-okhiria-bb332926b/" target="_blank" class="contact-method anim anim-d3">
+              <div class="contact-method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <div>
+                <div class="contact-method-label">LinkedIn</div>
+                <div class="contact-method-value">Temperate Okhiria</div>
+              </div>
+            </a>
+            <a href="https://m.me/61584522664198" target="_blank" class="contact-method anim anim-d4">
+              <div class="contact-method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </div>
+              <div>
+                <div class="contact-method-label">Facebook Messenger</div>
+                <div class="contact-method-value">Message on Facebook</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form anim anim-d2">
+          <div id="formContent">
+            <h3 class="form-title">Send a Message</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fname">First Name</label>
+                <input class="form-input" id="fname" type="text" placeholder="John" autocomplete="off">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lname">Last Name</label>
+                <input class="form-input" id="lname" type="text" placeholder="Doe" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="femail">Email Address</label>
+              <input class="form-input" id="femail" type="email" placeholder="john@example.com" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fservice">Service Needed</label>
+              <input class="form-input" id="fservice" type="text" placeholder="e.g. Business Website, E-Commerce...">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fmsg">Message</label>
+              <textarea class="form-textarea" id="fmsg" placeholder="Tell me about your project..."></textarea>
+            </div>
+            <button class="form-submit" id="submitBtn" onclick="handleFormSubmit()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
+            </button>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>Message Sent!</h3>
+            <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <p class="footer-copy">© 2026 Temperate Okhiria &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#137c67767e63766172677653747e727a7f3d707c7e"><span class="__cf_email__" data-cfemail="e78893828a978295869382a7808a868e8bc984888a">[email&#160;protected]</span></a></p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/temperate-okhiria-bb332926b/" target="_blank" class="social-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://wa.me/2347077905197" target="_blank" class="social-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div><!-- /contact -->
+
+</div><!-- /app -->
+
+<script src="js/main.js"></script>
+</body>
+</html>
