@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gardening Service Project | Temperate Okhiria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* =============================================
+       VARIABLES & RESET
+    ============================================= */
+    :root {
+      --green:        #3c8453;
+      --green-light:  #52a86e;
+      --green-dim:    rgba(60,132,83,0.13);
+      --green-glow:   rgba(60,132,83,0.25);
+      --charcoal:     #111318;
+      --surface:      #181c23;
+      --surface-2:    #1f242e;
+      --surface-3:    #252b38;
+      --border:       rgba(255,255,255,0.07);
+      --border-green: rgba(60,132,83,0.4);
+      --text:         #e8e6e1;
+      --text-muted:   #8a8f9c;
+      --text-dim:     #545866;
+      --white:        #ffffff;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 62.5%; scroll-behavior: smooth; }
+
+    body {
+      background: var(--charcoal);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1.5rem;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ambient glow */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 50% at 5% 10%, rgba(60,132,83,0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 35% at 95% 90%, rgba(60,132,83,0.06) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =============================================
+       TOP NAV BAR
+    ============================================= */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17,19,24,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.4rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .topbar-brand {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .topbar-brand em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--green-light);
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      padding: 0.6rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+    }
+
+    .btn-back:hover {
+      color: var(--green-light);
+      border-color: var(--border-green);
+    }
+
+    /* =============================================
+       HERO / PAGE HEADER
+    ============================================= */
+    .page-hero {
+      position: relative;
+      z-index: 1;
+      padding: 7rem 4rem 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1.5px;
+      background: var(--green);
+      display: inline-block;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 7rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .page-title strong {
+      font-weight: 600;
+      font-style: italic;
+      color: var(--green-light);
+      display: block;
+    }
+
+    .page-subtitle {
+      font-size: 1.6rem;
+      color: var(--text-muted);
+      margin-top: 2rem;
+      max-width: 550px;
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       MAIN WRAPPER
+    ============================================= */
+    .page-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 4rem 8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6rem;
+    }
+
+    /* Section headings */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-number {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--green);
+      letter-spacing: 0.1em;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--border-green), transparent);
+    }
+
+    /* =============================================
+       PROJECT OVERVIEW CARD
+    ============================================= */
+    .overview-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3.5rem 4rem;
+    }
+
+    .overview-intro {
+      font-size: 1.6rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      border-left: 3px solid var(--green);
+      padding-left: 2rem;
+      margin-bottom: 3.5rem;
+      max-width: 720px;
+    }
+
+    .overview-intro strong { color: var(--text); }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .detail-item {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      transition: border-color 0.2s;
+    }
+
+    .detail-item:hover { border-color: var(--border-green); }
+
+    .detail-icon {
+      font-size: 2.2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .detail-text strong {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.04em;
+    }
+
+    .detail-text p {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* =============================================
+       DEV TOOLS
+    ============================================= */
+    .tools-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .tool-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.2rem 2.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      flex: 1 1 130px;
+      max-width: 180px;
+      text-align: center;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    .tool-card:hover {
+      border-color: var(--border-green);
+      background: var(--surface-3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+
+    .tool-card img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      filter: brightness(0.9);
+      transition: filter 0.2s;
+    }
+
+    .tool-card:hover img { filter: brightness(1.1); }
+
+    .tool-card strong {
+      display: block;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .tool-card span {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+    }
+
+    /* =============================================
+       GALLERY GRID
+    ============================================= */
+    .gallery-hint {
+      font-size: 1.25rem;
+      color: var(--text-dim);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.6rem;
+    }
+
+    /* First image spans 2 columns — hero image */
+    .image-grid .grid-item:first-child {
+      grid-column: span 2;
+    }
+
+    .grid-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      background: var(--surface-2);
+      aspect-ratio: 4/3;
+      transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .grid-item:first-child {
+      aspect-ratio: 16/9;
+    }
+
+    .grid-item:hover {
+      transform: scale(1.02);
+      border-color: var(--border-green);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      z-index: 2;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .grid-item:hover img {
+      transform: scale(1.06);
+    }
+
+    /* Overlay on hover */
+    .grid-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(17,19,24,0.85) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 2rem;
+    }
+
+    .grid-item:hover .overlay { opacity: 1; }
+
+    .overlay-label {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .overlay-label svg { opacity: 0.8; }
+
+    /* =============================================
+       LIGHTBOX
+    ============================================= */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(10,12,16,0.97);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox-img-wrap {
+      position: relative;
+      max-width: 90vw;
+      max-height: 78vh;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+      border: 1px solid var(--border-green);
+    }
+
+    #lightbox-img {
+      display: block;
+      max-width: 90vw;
+      max-height: 78vh;
+      object-fit: contain;
+    }
+
+    .lightbox-footer {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .lightbox-caption {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .lightbox-counter {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      color: var(--text-dim);
+    }
+
+    .lb-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 2rem;
+      transition: all 0.2s;
+      z-index: 1001;
+      user-select: none;
+    }
+
+    .lb-btn:hover {
+      background: var(--green-dim);
+      border-color: var(--border-green);
+      color: var(--white);
+    }
+
+    .lb-prev { left: 2rem; }
+    .lb-next { right: 2rem; }
+
+    .lb-close {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.6rem;
+      transition: all 0.2s;
+      z-index: 1001;
+    }
+
+    .lb-close:hover {
+      background: rgba(220,50,50,0.15);
+      border-color: rgba(220,50,50,0.4);
+      color: #fc6a6a;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2.2rem 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      font-size: 1.25rem;
+      color: var(--text-dim);
+      margin: 0;
+    }
+
+    footer a {
+      color: #bcaa96;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--green-light); }
+
+    .socials {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .socials img {
+      width: 28px;
+      height: 28px;
+      filter: brightness(0.7);
+      transition: filter 0.2s, transform 0.2s;
+    }
+
+    .socials a:hover img {
+      filter: brightness(1);
+      transform: translateY(-3px);
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 900px) {
+      .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .image-grid .grid-item:first-child {
+        grid-column: span 2;
+      }
+      .page-title { font-size: 5rem; }
+      .topbar { padding: 1.4rem 2.5rem; }
+      .page-hero { padding: 5rem 2.5rem 3.5rem; }
+      .page-content { padding: 0 2.5rem 6rem; }
+      .overview-card { padding: 2.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+      .image-grid .grid-item:first-child {
+        grid-column: span 1;
+      }
+      .page-title { font-size: 4rem; }
+      .topbar { padding: 1.2rem 1.8rem; }
+      .page-hero { padding: 4rem 1.8rem 3rem; }
+      .page-content { padding: 0 1.8rem 5rem; gap: 4rem; }
+      .overview-card { padding: 2rem 1.8rem; }
+      footer { padding: 2rem 1.8rem; }
+      .footer-content { flex-direction: column; text-align: center; }
+      .lb-prev { left: 0.8rem; }
+      .lb-next { right: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topbar">
+    <div class="topbar-brand">Temperate <em>Okhiria</em></div>
+    <a href="index.html" class="btn-back">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Back Home
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="hero-eyebrow">Project Showcase</div>
+    <h1 class="page-title">
+      Gardening
+      <strong>Service Website</strong>
+    </h1>
+    <p class="page-subtitle">A fully responsive business website built locally with WordPress and Elementor — from concept to complete design.</p>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-content">
+
+    <!-- 01 — OVERVIEW -->
+    <section>
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">Overview</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="overview-card">
+        <p class="overview-intro">
+          A fully responsive <strong>Gardening Service Website</strong> designed and developed in a local development environment. This project showcases a complete business website with custom styling, optimized user experience, and an SEO-ready structure.
+        </p>
+
+        <div class="details-grid">
+          <div class="detail-item">
+            <span class="detail-icon">🖥️</span>
+            <div class="detail-text">
+              <strong>Environment</strong>
+              <p>Built locally using XAMPP server</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">🎨</span>
+            <div class="detail-text">
+              <strong>Customization</strong>
+              <p>Colors, forms, and layouts fully custom</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">🎯</span>
+            <div class="detail-text">
+              <strong>Purpose</strong>
+              <p>Practice project &amp; skill development</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">🌐</span>
+            <div class="detail-text">
+              <strong>Status</strong>
+              <p>Local development — not yet hosted</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 — TOOLS -->
+    <section>
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Development Tools</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="tools-grid">
+        <div class="tool-card">
+          <img src="https://www.apachefriends.org/images/xampp-logo-ac950edf.svg" alt="XAMPP" onerror="this.src='https://img.icons8.com/color/96/server.png'">
+          <strong>XAMPP</strong>
+          <span>Local Server</span>
+        </div>
+        <div class="tool-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress">
+          <strong>WordPress</strong>
+          <span>CMS Platform</span>
+        </div>
+        <div class="tool-card">
+          <img src="https://img.icons8.com/fluency/96/design.png" alt="Astra Theme">
+          <strong>Astra Theme</strong>
+          <span>Starter Theme</span>
+        </div>
+        <div class="tool-card">
+          <img src="https://img.icons8.com/color/96/web-design.png" alt="Elementor">
+          <strong>Elementor</strong>
+          <span>Page Builder</span>
+        </div>
+        <div class="tool-card">
+          <img src="https://yoast.com/app/uploads/2020/09/yoast-logo-icon.png" alt="Yoast SEO" onerror="this.src='https://img.icons8.com/color/96/search--v1.png'">
+          <strong>Yoast SEO</strong>
+          <span>SEO Plugin</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — GALLERY -->
+    <section>
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Gallery</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <p class="gallery-hint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Click any image to view fullscreen
+      </p>
+
+      <div class="image-grid">
+        <div class="grid-item" onclick="openLightbox(0)">
+          <img src="images/HOME.jpeg" alt="Home Page">
+          <div class="overlay">
+            <span class="overlay-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              Home Page
+            </span>
+          </div>
+        </div>
+        <div class="grid-item" onclick="openLightbox(1)">
+          <img src="images/about-us.jpeg" alt="About Us">
+          <div class="overlay">
+            <span class="overlay-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              About Us
+            </span>
+          </div>
+        </div>
+        <div class="grid-item" onclick="openLightbox(2)">
+          <img src="images/contact-us.jpeg" alt="Contact Us">
+          <div class="overlay">
+            <span class="overlay-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              Contact Us
+            </span>
+          </div>
+        </div>
+        <div class="grid-item" onclick="openLightbox(3)">
+          <img src="images/our services.jpeg" alt="Our Services">
+          <div class="overlay">
+            <span class="overlay-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              Our Services
+            </span>
+          </div>
+        </div>
+        <div class="grid-item" onclick="openLightbox(4)">
+          <img src="images/our-project.jpeg" alt="Our Projects">
+          <div class="overlay">
+            <span class="overlay-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              Our Projects
+            </span>
+          </div>
+        </div>
+        <div class="grid-item" onclick="openLightbox(5)">
+          <img src="images/why-us.jpeg" alt="Why Us">
+          <div class="overlay">
+            <span class="overlay-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              Why Us
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- .page-content -->
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lb-close" onclick="closeLightbox(event)" title="Close">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <div class="lb-btn lb-prev" onclick="changeImage(-1, event)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </div>
+    <div class="lightbox-img-wrap" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="">
+    </div>
+    <div class="lb-btn lb-next" onclick="changeImage(1, event)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <div class="lightbox-footer">
+      <span class="lightbox-caption" id="lightbox-caption"></span>
+      <span class="lightbox-counter" id="lightbox-counter"></span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <p class="footer-copy">© 2023 by Okhiria Temperate Ehis | <a href="mailto:otemperate@gmail.com">otemperate@gmail.com</a></p>
+        
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/temperate-okhiria-bb332926b/" target="_blank" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://m.me/61584522664198" target="_blank" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://wa.me/2348035498494" target="_blank" class="social-btn" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const images = [
+      { src: "images/HOME.jpeg",          label: "Home Page" },
+      { src: "images/about-us.jpeg",      label: "About Us" },
+      { src: "images/contact-us.jpeg",    label: "Contact Us" },
+      { src: "images/our services.jpeg",  label: "Our Services" },
+      { src: "images/our-project.jpeg",   label: "Our Projects" },
+      { src: "images/why-us.jpeg",        label: "Why Us" },
+    ];
+
+    let current = 0;
+
+    function openLightbox(index) {
+      current = index;
+      updateLightbox();
+      document.getElementById("lightbox").classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target !== document.getElementById("lightbox") && !e.target.closest(".lb-close")) return;
+      document.getElementById("lightbox").classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    function changeImage(dir, e) {
+      if (e) e.stopPropagation();
+      current = (current + dir + images.length) % images.length;
+      updateLightbox();
+    }
+
+    function updateLightbox() {
+      document.getElementById("lightbox-img").src = images[current].src;
+      document.getElementById("lightbox-img").alt = images[current].label;
+      document.getElementById("lightbox-caption").textContent = images[current].label;
+      document.getElementById("lightbox-counter").textContent = (current + 1) + " / " + images.length;
+    }
+
+    // Keyboard navigation
+    document.addEventListener("keydown", function(e) {
+      const lb = document.getElementById("lightbox");
+      if (!lb.classList.contains("active")) return;
+      if (e.key === "ArrowLeft")  changeImage(-1);
+      if (e.key === "ArrowRight") changeImage(1);
+      if (e.key === "Escape")     { lb.classList.remove("active"); document.body.style.overflow = ""; }
+    });
+  </script>
+
+</body>
+</html>
