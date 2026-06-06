@@ -760,6 +760,16 @@ nav.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,.6); }
 .form-label {
   font-size: 1.3rem; font-weight: 500; color: var(--white);
 }
+
+
+select.form-input {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+
 .form-input, .form-textarea {
   background: var(--bg3); border: 1.5px solid var(--border);
   border-radius: 12px; padding: 1.4rem 1.6rem;
