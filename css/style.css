@@ -263,7 +263,6 @@ nav.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,.6); }
   display: flex; gap: 3rem;
   animation: fadeSlideUp .8s var(--ease-out) .8s both;
 }
-.stat-item { }
 .stat-n {
   font-family: var(--ff-head);
   font-size: 3.2rem; font-weight: 800;
@@ -448,7 +447,6 @@ nav.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,.6); }
   border-radius: 10px; display: flex; align-items: center; justify-content: center;
 }
 .future-icon svg { width: 20px; height: 20px; color: var(--gold); }
-.future-content {}
 .future-title { font-size: 1.4rem; font-weight: 600; color: var(--white); margin-bottom: .4rem; }
 .future-desc  { font-size: 1.2rem; color: var(--muted); line-height: 1.5; }
 .future-badge {
