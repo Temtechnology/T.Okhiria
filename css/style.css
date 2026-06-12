@@ -801,21 +801,46 @@ select.form-input {
 
 /* success message */
 .form-success {
-  display: none; text-align: center; padding: 2rem;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 3rem;
+  gap: 1.6rem;
 }
-.form-success.show { display: block; }
 .form-success-icon {
-  width: 64px; height: 64px; border-radius: 50%;
-  background: var(--green-dim); border: 2px solid var(--green);
+  width: 80px; height: 80px; border-radius: 50%;
+  background: var(--green-dim); 
+  border: 2px solid var(--green);
   display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 1.6rem;
+  animation: pulse 2s ease-in-out infinite;
 }
-.form-success-icon svg { width: 28px; height: 28px; color: var(--green); }
+.form-success-icon svg { width: 36px; height: 36px; color: var(--green); }
 .form-success h3 {
-  font-family: var(--ff-head); font-size: 2rem;
-  color: var(--white); margin-bottom: .8rem;
+  font-family: var(--ff-head); 
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--white); 
+  margin-bottom: .4rem;
 }
-.form-success p { font-size: 1.4rem; color: var(--muted); }
+.form-success p { 
+  font-size: 1.5rem; 
+  color: var(--muted); 
+  line-height: 1.7;
+  max-width: 300px;
+}
+.form-success .success-tag {
+  font-family: var(--ff-mono);
+  font-size: 1.1rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: var(--green-dim);
+  border: 1px solid rgba(0,229,160,.2);
+  padding: .5rem 1.4rem;
+  border-radius: 50px;
+}
 
 /* ══════════════════════════════════════════
    FOOTER
